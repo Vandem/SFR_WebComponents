@@ -82,9 +82,10 @@ export class AutocompleteElement extends HTMLElement {
   attributeChangedCallback(name: string, old: string, value: string) {
     this.list = JSON.parse(value)
     console.log(`Attribute ${name} value:`, this.list);
-    // this.autocomplete(this.el, list);
   }
 
+  // autocomplete code and styling taken from https://www.w3schools.com/howto/howto_js_autocomplete.asp
+  // adapted by Aljoscha Alquati
   onInputChanged() {
     var a, b, i, val = this.inputElement.value;
     /*close any already open lists of autocompleted values*/
@@ -174,7 +175,6 @@ export class AutocompleteElement extends HTMLElement {
   closeAllLists(elmnt?) {
     /*close all autocomplete lists in the document,
     except the one passed as an argument:*/
-    // var x = this.shadowRoot.getElementsByClassName("autocomplete-items");
     var x = this.shadowRoot.querySelectorAll("div.autocomplete-items")
     for (var i = 0; i < x.length; i++) {
       if (elmnt != x[i] && elmnt != this.inputElement) {
